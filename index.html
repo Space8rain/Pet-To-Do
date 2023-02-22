@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/normalize.css">
+  <link rel="stylesheet" href="./style/style.css">
+
+  <title>ToDo</title>
+</head>
+
+<body>
+  <main class="main">
+    <div class="todo">
+      
+      <div class="rotation circle circle_100px">
+      </div>
+      <div class="rotation circle circle_150px">
+      </div>
+      <div class="rotation circle circle_200px">
+      </div>
+      <div class="rotation circle circle_250px">
+      </div>
+      <div class="rotation circle circle_500px">
+      </div>
+      <div class="rotation circle circle_600px">
+      </div>
+
+      <div class="head">
+        <h1>To Do List</h1>
+        <div class="switch">
+          <input type="checkbox" class="switch_theme">
+        </div>
+      </div>
+
+      <div class="create_new_task">
+        <input type="text" class="input" required placeholder="Type something">
+        <button class="btn_add">ADD +</button>
+      </div>
+
+      <div class="wrapper">
+        <div class="patch">
+          <img src="./images/patch_img.png" alt="" class="patch_img">
+          <p class="patch_text">no tasks today</p>
+        </div>
+        
+        <ul class="tasks">
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <template class="template_task">
+    <li class="task">
+      <div class="action">
+        <img src="./images/icon_drag.svg" alt="icon drag task"
+        class="btn_drag">
+        <input type="checkbox" class="task_done">
+      </div>
+      <p class="task_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis suscipit</p>
+      <img src="./images/icon_task_del.svg" alt="icon delete task" class="task_del">
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.circle {
+  background-image: var(--circle-bg-gradient_v1);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circle_100px {
+  background-image: var(--circle-bg-gradient_v2);
+  width: 100px;
+  height: 100px;
+  left: -200px;
+  top: 200px;
+}
+
+.circle_150px {
+  background-image: var(--circle-bg-gradient_v1);
+  width: 150px;
+  height: 150px;
+  right: -350px;
+  top: 250px;
+}
+
+.circle_200px {
+  background-image: var(--circle-bg-gradient_v2);
+  width: 200px;
+  height: 200px;
+  right: -200px;
+  bottom: -250px;
+}
+
+.circle_250px {
+  width: 250px;
+  height: 250px;
+  left: -470px;
+  top: -150px;
+}
+
+.circle_500px {
+  width: 600px;
+  height: 600px;
+  right: -850px;
+  top: -500px;
+}
+
+.circle_600px {
+  width: 600px;
+  height: 600px;
+  left: -750px;
+  top: 600px;
+}
+
+.rotation {
+  animation: rotation 20s linear infinite;
+}
