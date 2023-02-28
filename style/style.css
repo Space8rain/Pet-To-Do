@@ -174,7 +174,7 @@ h1 {
   height: 176px;
   border-radius: 20px;
   text-align: center;
-  display: none;
+  /* display: none; */
 }
 
 
@@ -238,4 +238,8 @@ h1 {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.task_del {
+  cursor: pointer;
 }

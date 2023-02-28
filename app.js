@@ -1,4 +1,4 @@
-let patch = document.querySelector('.patch'),
+const patch = document.querySelector('.patch'),
     temp = document.querySelector('.template_task'),
     container = document.querySelector('.tasks'),
     addButton = document.querySelector('.btn_add'),
@@ -7,9 +7,6 @@ let patch = document.querySelector('.patch'),
   function createNewTask (taskText) {
   let cloneTemp = temp.content.querySelector('.task').cloneNode(true);
   cloneTemp.querySelector('.task_text').textContent = taskText;
-  cloneTemp.querySelector('.task_del').addEventListener('click', (evt) => {
-    console.log(evt.target);
-  })
   return cloneTemp
   };
 
@@ -19,11 +16,17 @@ let patch = document.querySelector('.patch'),
     tasksCheker ();
   };
 
+  function delTask(evt) {
+    const btn_del = evt.target.closest('.task_del');
+    if (!btn_del) return;
+    btn_del.parentElement.remove();
+    tasksCheker ();
+  }
+
   function tasksCheker () {
     patch.style.display = !container.childElementCount ? 'block' : 'none'
   };
 
   addButton.addEventListener('click', addTask)
-  tasksCheker ()
 
-  
+  container.addEventListener('click', delTask)
