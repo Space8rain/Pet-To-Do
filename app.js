@@ -7,22 +7,23 @@ let patch = document.querySelector('.patch'),
   function createNewTask (taskText) {
   let cloneTemp = temp.content.querySelector('.task').cloneNode(true);
   cloneTemp.querySelector('.task_text').textContent = taskText;
+  cloneTemp.querySelector('.task_del').addEventListener('click', (evt) => {
+    console.log(evt.target);
+  })
   return cloneTemp
   };
 
-  function tasksCheker () {
-    patch.style.display = container.childElementCount < 1 ? 'block' : 'none'
-  }
-
-  addButton.addEventListener('click', (evt) => {
+  function addTask() {
     container.prepend(createNewTask(input.value));
-    console.log(createNewTask(input.value));
-    input.value = ''
+    input.value = '';
     tasksCheker ();
-    console.log(container.childElementCount);
-  })
+  };
 
-  // setTimeout(() => {
-  //   console.log(container.childElementCount);
-  // }, 1000);
+  function tasksCheker () {
+    patch.style.display = !container.childElementCount ? 'block' : 'none'
+  };
+
+  addButton.addEventListener('click', addTask)
   tasksCheker ()
+
+  
