@@ -233,6 +233,10 @@ h1 {
   background: url(../images/icon_task.svg);
 }
 
+.task_done:checked {
+  background: url(../images/icon_task_done.svg);
+}
+
 .task_text {
   width: 364px;
   overflow: hidden;
