@@ -4,10 +4,18 @@ const patch = document.querySelector('.patch'),
     form = document.querySelector('.create_new_task'),
     input = document.querySelector('.input');
 
-// Массив с задачами для локального хранилища
-const todoList = [];
+// Если в хранилище есть задачи записываем в массив, если нет, то создаем пустой
+const todoList = localStorage.getItem('tasks')
+  ? JSON.parse(localStorage.getItem('tasks'))
+  : [];
 
-
+// Если массив не пустой удаляем заплатку и добавляем в разметку задачи
+if (todoList.length) {
+  tasksCheker ()
+  todoList.forEach(task => {
+    container.insertAdjacentHTML('beforeend', createNewTask(task))
+  })
+};
 
 // Создание разметки новой задачи
 function createNewTask (data) {
@@ -16,10 +24,10 @@ function createNewTask (data) {
     <div class="action">
       <img src="./images/icon_drag.svg" alt="icon drag task"
       class="btn_drag">
-      <input type="checkbox" class="task_done" ${data.done ? 'checked' : ''}>
+      <input type="checkbox" class="btn_task-done" ${data.done ? 'checked' : ''}>
     </div>
-    <p class="task_text">${data.text}</p>
-    <img src="./images/icon_task_del.svg" alt="icon delete task" class="task_del">
+    <p class="task_text ${data.done ? 'task_text__done' : ''}">${data.text}</p>
+    <img src="./images/icon_task_del.svg" alt="icon delete task" class="btn_task-del">
   </li>`;
 
   return taskHtml
@@ -27,7 +35,9 @@ function createNewTask (data) {
 
 // Отрисовка заплатки в зависимости от наличия задачи
 function tasksCheker () {
-  patch.style.display = !container.childElementCount ? 'block' : 'none'
+  // patch.style.display = !container.childElementCount ? 'block' : 'none'
+  patch.style.display = todoList.length ? 'none' : 'block'
+
 };
 
 // Добавляем задачу в разметку и массив задач для последующего сохранения в локальном хранилище
@@ -54,13 +64,16 @@ function addTask(event) {
   tasksCheker ();
 };
 
-// Отмечаем выполненую задачу
+// Меняем статус задачи
 function doneTask(event) {
-  const btnDone = event.target.closest('.task_done');
+  const btnDone = event.target.closest('.btn_task-done');
   if (!btnDone) return;
 
   // Находим задачу на которой поймали событие
   const parentNode = btnDone.closest('.task');
+
+  const taskText = parentNode.querySelector('.task_text');
+  taskText.classList.toggle('task_text__done')
   // Находим ИД задачи на которой поймали событие и задачу из массива и этим ИД
   const id = parentNode.id;
   const task = todoList.find((task) => task.id == id);
@@ -73,7 +86,7 @@ function doneTask(event) {
 
 // Удаление задачи
 function delTask(event) {
-  const btnDel = event.target.closest('.task_del');
+  const btnDel = event.target.closest('.btn_task-del');
   if (!btnDel) return;
 
   // Находим задачу на которой поймали событие
