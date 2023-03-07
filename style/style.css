@@ -137,15 +137,16 @@ h1 {
 }
 
 .error {
-  border: 1px solid red
+  border: 1px solid #A83636
 }
 
 .error_message {
   position: absolute;
   top: 50px;
   left: 15px;
-  font-size: 12px;
-  color: red;
+  font-size: 16px;
+  color: #A83636;
+  display: none;
 }
 
 /* .input:hover {

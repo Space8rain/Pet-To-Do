@@ -39,14 +39,24 @@ function tasksCheker () {
   patch.style.display = todoList.length ? 'none' : 'block'
 };
 
+function resetError () {
+  input.classList.remove('error');
+  form.querySelector('.error_message').style.display = 'none';
+};
+
 // Добавляем задачу в разметку и массив задач для последующего сохранения в локальном хранилище
 function addTask(event) {
   event.preventDefault();
 
+// Проверяем заполнен ли input, если нет, то отображаем сообщение об ошибке
   if (input.value.length == 0) {
     input.classList.add('error');
+    form.querySelector('.error_message').style.display = 'block';
     return
-  }
+  };
+
+// Убираем отображение ошибок
+  resetError();
 
   // Объект задачи для добавления в массив
   const newTask = {
@@ -70,6 +80,7 @@ function addTask(event) {
 
 // Меняем статус задачи
 function doneTask(event) {
+  resetError();
   const btnDone = event.target.closest('.btn_task-done');
   if (!btnDone) return;
 
@@ -90,6 +101,7 @@ function doneTask(event) {
 
 // Удаление задачи
 function delTask(event) {
+  resetError();
   const btnDel = event.target.closest('.btn_task-del');
   if (!btnDel) return;
 
