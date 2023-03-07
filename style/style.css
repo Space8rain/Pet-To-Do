@@ -116,6 +116,7 @@ h1 {
 }
 
 .create_new_task {
+  position: relative;
   width: 480px;
   height: 44px;
   display: flex;
@@ -133,6 +134,18 @@ h1 {
   font-weight: 400;
   font-size: 14px;
   color: #DFDFDF;
+}
+
+.error {
+  border: 1px solid red
+}
+
+.error_message {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  font-size: 12px;
+  color: red;
 }
 
 /* .input:hover {

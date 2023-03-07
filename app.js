@@ -37,12 +37,16 @@ function createNewTask (data) {
 function tasksCheker () {
   // patch.style.display = !container.childElementCount ? 'block' : 'none'
   patch.style.display = todoList.length ? 'none' : 'block'
-
 };
 
 // Добавляем задачу в разметку и массив задач для последующего сохранения в локальном хранилище
 function addTask(event) {
   event.preventDefault();
+
+  if (input.value.length == 0) {
+    input.classList.add('error');
+    return
+  }
 
   // Объект задачи для добавления в массив
   const newTask = {
@@ -55,7 +59,7 @@ function addTask(event) {
   todoList.push(newTask);
 
     // Перезаписываем массив задач в хранилище
-  localStorage.setItem('tasks', JSON.stringify(todoList))
+  localStorage.setItem('tasks', JSON.stringify(todoList));
 
   // Добавляем задачу в разметку
   container.insertAdjacentHTML('beforeend', createNewTask(newTask));
@@ -97,7 +101,7 @@ function delTask(event) {
   // Находим индекс задачи в массиве
   const index = todoList.findIndex((task) => task.id == id);
 
-// Удаляем задачу из массива
+  // Удаляем задачу из массива
   todoList.splice(index, 1);
 
   // Перезаписываем массив задач в хранилище
