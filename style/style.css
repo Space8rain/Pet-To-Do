@@ -236,7 +236,7 @@ h1 {
 }
 
 .btn_drag {
-  cursor: pointer;
+  cursor: grab;
 }
 
 .btn_task-done {

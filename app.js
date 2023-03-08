@@ -17,6 +17,11 @@ if (todoList.length) {
   })
 };
 
+// Перезаписываем массив задач в хранилище
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(todoList));
+};
+
 // Создание разметки новой задачи
 function createNewTask (data) {
   const taskHtml = `
@@ -40,12 +45,12 @@ function tasksCheker () {
 };
 
 // Проверяем заполнен ли input, если нет, то отображаем сообщение об ошибке
-function validate () {
-  if (input.value.length == 0) {
+function validateInput () {
+  if (input.value.length === 0) {
     input.classList.add('error');
     form.querySelector('.error_message').style.display = 'block';
-    return
-  };
+    throw Error('Empty input');
+  }
 };
 
 // Сброс стилей ошибок
@@ -59,7 +64,7 @@ function addTask(event) {
   event.preventDefault();
 
 // Проверяем заполнен ли input
-  validate();
+  validateInput();
 
 // Убираем отображение ошибок
   resetError();
@@ -74,8 +79,8 @@ function addTask(event) {
   // Добавляем задачу в массив
   todoList.push(newTask);
 
-    // Перезаписываем массив задач в хранилище
-  localStorage.setItem('tasks', JSON.stringify(todoList));
+  // Перезаписываем массив задач в хранилище
+  saveTasks();
 
   // Добавляем задачу в разметку
   container.insertAdjacentHTML('beforeend', createNewTask(newTask));
@@ -94,15 +99,16 @@ function doneTask(event) {
   const parentNode = btnDone.closest('.task');
 
   const taskText = parentNode.querySelector('.task_text');
-  taskText.classList.toggle('task_text__done')
+  taskText.classList.toggle('task_text__done');
   // Находим ИД задачи на которой поймали событие и задачу из массива и этим ИД
   const id = parentNode.id;
   const task = todoList.find((task) => task.id == id);
   
   // Меняем значение статуса задачи
   task.done = !task.done;
-      // Перезаписываем массив задач в хранилище
-  localStorage.setItem('tasks', JSON.stringify(todoList));
+
+  // Перезаписываем массив задач в хранилище
+  saveTasks();
 };
 
 // Удаление задачи
@@ -123,7 +129,7 @@ function delTask(event) {
   todoList.splice(index, 1);
 
   // Перезаписываем массив задач в хранилище
-  localStorage.setItem('tasks', JSON.stringify(todoList))
+  saveTasks();
 
   // Удаляем задачу из разметки
   parentNode.remove();
@@ -133,3 +139,25 @@ function delTask(event) {
 form.addEventListener('submit', addTask);
 container.addEventListener('click', delTask);
 container.addEventListener('click', doneTask);
+
+new Sortable(container, {
+  animation: 300,
+  handle: '.btn_drag',
+  store: {
+    get: function () {
+      return JSON.parse(localStorage.getItem('tasks'))
+      // return localStorage.getItem('tasks')
+      // ? JSON.parse(localStorage.getItem('tasks'))
+      // : [];;
+      },
+    set: () => {
+      console.log('save');
+      const arrTasks = Array.prototype.slice.call(container.children);
+      console.log(arrTasks);
+      arrTasks.forEach(task => {
+        
+      });
+      // localStorage.setItem('tasks', JSON.stringify(todoList));
+    }
+  },
+});
