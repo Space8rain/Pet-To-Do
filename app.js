@@ -39,6 +39,16 @@ function tasksCheker () {
   patch.style.display = todoList.length ? 'none' : 'block'
 };
 
+// Проверяем заполнен ли input, если нет, то отображаем сообщение об ошибке
+function validate () {
+  if (input.value.length == 0) {
+    input.classList.add('error');
+    form.querySelector('.error_message').style.display = 'block';
+    return
+  };
+};
+
+// Сброс стилей ошибок
 function resetError () {
   input.classList.remove('error');
   form.querySelector('.error_message').style.display = 'none';
@@ -48,12 +58,8 @@ function resetError () {
 function addTask(event) {
   event.preventDefault();
 
-// Проверяем заполнен ли input, если нет, то отображаем сообщение об ошибке
-  if (input.value.length == 0) {
-    input.classList.add('error');
-    form.querySelector('.error_message').style.display = 'block';
-    return
-  };
+// Проверяем заполнен ли input
+  validate();
 
 // Убираем отображение ошибок
   resetError();
