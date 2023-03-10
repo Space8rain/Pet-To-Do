@@ -178,8 +178,22 @@ h1 {
 }
 
 .wrapper {
-  width: 480px;
+  width: 495px;
   margin: 40px auto;
+  padding: 0 0 0 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--element-color);
+  border-radius: 20px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--active-element);
+  border-radius: 20px;
 }
 
 .patch {

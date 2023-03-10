@@ -5,7 +5,7 @@ const patch = document.querySelector('.patch'),
     input = document.querySelector('.input');
 
 // Если в хранилище есть задачи записываем в массив, если нет, то создаем пустой
-const todoList = localStorage.getItem('tasks')
+let todoList = localStorage.getItem('tasks')
   ? JSON.parse(localStorage.getItem('tasks'))
   : [];
 
@@ -144,20 +144,26 @@ new Sortable(container, {
   animation: 300,
   handle: '.btn_drag',
   store: {
-    get: function () {
-      return JSON.parse(localStorage.getItem('tasks'))
-      // return localStorage.getItem('tasks')
-      // ? JSON.parse(localStorage.getItem('tasks'))
-      // : [];;
-      },
+    // get: function () {
+    //   return JSON.parse(localStorage.getItem('tasks'))
+    //   // return localStorage.getItem('tasks')
+    //   // ? JSON.parse(localStorage.getItem('tasks'))
+    //   // : [];;
+    //   },
     set: () => {
-      console.log('save');
-      const arrTasks = Array.prototype.slice.call(container.children);
-      console.log(arrTasks);
+      // const arrTasks = Array.prototype.slice.call(container.children);
+      const arrTasks = Array.from(container.children);
+      const newArray = [];
       arrTasks.forEach(task => {
-        
-      });
-      // localStorage.setItem('tasks', JSON.stringify(todoList));
+        const newTask = {
+          id: task.id,
+          text: task.children[1].textContent,
+          done: task.children[0].children[1].checked,
+        };
+        newArray.push(newTask);
+      })
+      todoList = newArray;
+      localStorage.setItem('tasks', JSON.stringify(todoList));
     }
   },
 });
