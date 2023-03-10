@@ -140,6 +140,7 @@ form.addEventListener('submit', addTask);
 container.addEventListener('click', delTask);
 container.addEventListener('click', doneTask);
 
+// Добавляем бибиотеку с Drag and Drop
 new Sortable(container, {
   animation: 300,
   handle: '.btn_drag',
@@ -150,18 +151,20 @@ new Sortable(container, {
     //   // ? JSON.parse(localStorage.getItem('tasks'))
     //   // : [];;
     //   },
+
+    // Пересохраняем массив с новым порядком
     set: () => {
-      // const arrTasks = Array.prototype.slice.call(container.children);
-      const arrTasks = Array.from(container.children);
+      const arrTasks = container.children
       const newArray = [];
-      arrTasks.forEach(task => {
+      
+      for (task of arrTasks) {
         const newTask = {
           id: task.id,
           text: task.children[1].textContent,
           done: task.children[0].children[1].checked,
         };
         newArray.push(newTask);
-      })
+      }
       todoList = newArray;
       localStorage.setItem('tasks', JSON.stringify(todoList));
     }
