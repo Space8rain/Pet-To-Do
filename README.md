@@ -2,9 +2,9 @@
 
 <p align="center">
 
-<img src="./readme_assets/readme_preview_1.png" width="33%">
-<img src="./readme_assets/readme_preview_2.png" width="33%">
-<img src="./readme_assets/readme_preview_3.png" width="33%">
+<img src="./readme_assets/readme_preview_1.png" width="30%">
+<img src="./readme_assets/readme_preview_2.png" width="30%">
+<img src="./readme_assets/readme_preview_3.png" width="30%">
 
 </p>
 
