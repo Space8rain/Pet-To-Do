@@ -19,11 +19,33 @@
   --text-color: rgb(251, 252, 252);
 
   --text-color-sec: rgb(146, 146, 146);
+
+  --error: rgb(168, 54, 54);
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+.main[data-theme='true'] {
+  --bg-color: rgb(251, 252, 252);
+
+  --circle-bg-gradient_v1: linear-gradient(90deg, #F1F1FF 14.04%, #FFFFFF 70.87%);
+
+  --circle-bg-gradient_v2: linear-gradient(180deg, #F1F1FF 14.04%, #FFFFFF 70.87%);
+
+  --main-color: rgb(255, 255, 255);
+
+  --input-color: rgb(240, 240, 246);
+
+  --active-element: rgb(93, 101, 239);
+
+  --active-element-hover: rgb(107, 115, 255);
+
+  --text-color: rgb(67, 69, 98);
+
+  --text-color-sec: rgb(149, 149, 177);
 }
 
 .main {
@@ -161,7 +183,7 @@ h1 {
   border: none;
   border-radius: .5rem;
   background-color: var(--active-element);
-  color: var(--text-color);
+  color: rgb(251, 252, 252);
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -185,12 +207,12 @@ h1 {
 
 .wrapper::-webkit-scrollbar {
   width: 8px;
-  background-color: var(--input-color);
+  background-color: var(--bg-color);
   border-radius: 20px;
 }
 
 .wrapper::-webkit-scrollbar-thumb {
-  background-color: var(--active-element);
+  background-color: var(--input-color);
   border-radius: 20px;
 }
 

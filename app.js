@@ -1,8 +1,29 @@
-const patch = document.querySelector('.patch'),
-    temp = document.querySelector('.template_task'),
-    container = document.querySelector('.tasks'),
-    form = document.querySelector('.create_new_task'),
-    input = document.querySelector('.input');
+const mianToDo = document.querySelector('.main'),
+      checkBoxTheme = document.querySelector('.switch_theme'),
+      patch = document.querySelector('.patch'),
+      temp = document.querySelector('.template_task'),
+      container = document.querySelector('.tasks'),
+      form = document.querySelector('.create_new_task'),
+      input = document.querySelector('.input');
+
+// Проверяем сохранен ли статус темы в хранилище и устанавливаем атрибут и значение переключателя
+(function isTheme() {
+  checkBoxTheme.checked = JSON.parse(localStorage.getItem('theme'));
+  mianToDo.setAttribute('data-theme',
+  localStorage.getItem('theme')
+    ? localStorage.getItem('theme')
+    : false);
+})()
+
+// Переключатель темы с сохранеием статуса в хранилище
+function handleTheme () {
+  if (this.checked) {
+    mianToDo.setAttribute('data-theme', 'true');
+  } else {
+    mianToDo.setAttribute('data-theme', 'false');
+  };
+  localStorage.setItem('theme', checkBoxTheme.checked);
+};
 
 // Если в хранилище есть задачи записываем в массив, если нет, то создаем пустой
 let todoList = localStorage.getItem('tasks')
@@ -136,9 +157,14 @@ function delTask(event) {
   tasksCheker ();
 };
 
+// Слушатель на добавление задачи
 form.addEventListener('submit', addTask);
+// Слушатель на удаление задачи
 container.addEventListener('click', delTask);
+// Слушатель на выполненые задачи
 container.addEventListener('click', doneTask);
+// Слушатель на переключение темы
+checkBoxTheme.addEventListener('change', handleTheme);
 
 // Добавляем бибиотеку с Drag and Drop
 new Sortable(container, {
