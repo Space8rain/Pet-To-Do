@@ -107,6 +107,7 @@ function addTask(event) {
   container.insertAdjacentHTML('beforeend', createNewTask(newTask));
 
   input.value = '';
+  input.focus();
   tasksCheker ();
 };
 
@@ -157,6 +158,8 @@ function delTask(event) {
   tasksCheker ();
 };
 
+// Слушатель на ввод в инпут и сброс ошибок
+input.addEventListener('input', resetError)
 // Слушатель на добавление задачи
 form.addEventListener('submit', addTask);
 // Слушатель на удаление задачи
