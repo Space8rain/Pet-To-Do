@@ -173,6 +173,7 @@ checkBoxTheme.addEventListener('change', handleTheme);
 new Sortable(container, {
   animation: 300,
   handle: '.btn_drag',
+  ghostClass: 'ghost',
   store: {
     // get: function () {
     //   return JSON.parse(localStorage.getItem('tasks'))
