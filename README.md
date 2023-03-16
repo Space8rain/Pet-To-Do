@@ -18,6 +18,7 @@
 
 A simple pet project made in JS
 Implemented:
+* Switch theme
 * Adding/removing tasks
 * Mark completed
 * Drag and Drop (using the <a  href="https://github.com/SortableJS/Sortable">Sortable Library</a>)
