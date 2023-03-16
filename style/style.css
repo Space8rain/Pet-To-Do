@@ -4,9 +4,9 @@
 :root {
   --bg-color: rgb(24, 24, 24);
 
-  --circle-bg-gradient_v1: linear-gradient(90deg, #242424 0%, #171717 50.52%, #131313 100%);
+  --circle-bg-gradient_v1: linear-gradient(90deg, rgb(36, 36, 36) 0%, rgb(23, 23, 23) 50.52%, rgb(19, 19, 19) 100%);
 
-  --circle-bg-gradient_v2: linear-gradient(180deg, #242424 0%, #171717 50.52%, #131313 100%);
+  --circle-bg-gradient_v2: linear-gradient(180deg, rgb(36, 36, 36) 0%, rgb(23, 23, 23) 50.52%, rgb(19, 19, 19) 100%);
 
   --main-color: rgb(30, 30, 30);
 
@@ -33,9 +33,9 @@
 .main[data-theme='true'] {
   --bg-color: rgb(251, 252, 252);
 
-  --circle-bg-gradient_v1: linear-gradient(90deg, rgb(240, 240, 245) 14.04%, rgb(255, 255, 255) 70.87%);
+  --circle-bg-gradient_v1: linear-gradient(90deg, rgb(237, 238, 255) 14.25%, rgb(245, 245, 255) 49.1%, rgb(255, 255, 255) 84.69%);
 
-  --circle-bg-gradient_v2: linear-gradient(180deg, rgb(240, 240, 245) 14.04%, rgb(255, 255, 255) 70.87%);
+  --circle-bg-gradient_v2: linear-gradient(180deg, rgb(237, 238, 255) 14.25%, rgb(245, 245, 255) 49.1%, rgb(255, 255, 255) 84.69%);
 
   --main-color: rgb(255, 255, 255);
 
