@@ -62,6 +62,8 @@
   overflow: hidden;
   background-color: var(--bg-color);
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 .todo {
@@ -72,10 +74,13 @@
   border-radius: 1.25rem;
   background-color: var(--main-color);
   color: var(--text-color);
-  width: 600px;
+  max-width: 600px;
+  width: calc(100% - 40px);
   height: 700px;
-  margin: auto;
+  padding: 40px 60px 56px;
   box-shadow: 0px 4px 48px var(--shadow);
+  box-sizing: border-box;
+  gap: 40px;
 }
 
 
@@ -83,9 +88,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 480px;
+  max-width: 480px;
+  width: 100%;
   height: 44px;
-  margin: 40px auto;
+  /* margin-bottom: 40px; */
   cursor: pointer;
 
 }
@@ -143,7 +149,8 @@ h1 {
 
 .create_new_task {
   position: relative;
-  width: 480px;
+  max-width: 480px;
+  width: 100%;
   height: 44px;
   display: flex;
   justify-content: space-between;
@@ -186,6 +193,7 @@ h1 {
 
 .btn_add-task {
   width: 92px;
+  padding: 10px;
   border: none;
   border-radius: .5rem;
   background-color: var(--active-element);
@@ -204,9 +212,10 @@ h1 {
 }
 
 .wrapper {
-  width: 495px;
-  margin: 40px auto;
-  padding: 0 0 0 15px;
+  max-width: 490px;
+  width: 105%;
+  padding-right: 10px;
+  margin-right: -20px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -224,7 +233,8 @@ h1 {
 
 .patch {
   background-color: var(--input-color);
-  width: 480px;
+  max-width: 480px;
+  width: 100%;
   height: 176px;
   border-radius: 20px;
   text-align: center;
@@ -249,11 +259,11 @@ h1 {
 
 .tasks {
   /* counter-reset: my-counter; */
-  /* outline: 1px solid red; */
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 480px;
+  max-width: 480px;
+  width: 100%;
 }
 
 .task {
