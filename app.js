@@ -43,17 +43,16 @@ function saveTasks() {
   localStorage.setItem('tasks', JSON.stringify(todoList));
 };
 
-// Создание разметки новой задачи
+// Создание разметки новой задачи 
 function createNewTask (data) {
   const taskHtml = `
   <li id="${data.id}" class="task">
     <div class="action">
-      <img src="./images/icon_drag.svg" alt="icon drag task"
-      class="btn_drag">
+      <button class="btn_drag"></button>
       <input type="checkbox" class="btn_task-done" ${data.done ? 'checked' : ''}>
     </div>
     <p class="task_text ${data.done ? 'task_text__done' : ''}">${data.text}</p>
-    <img src="./images/icon_task_del.svg" alt="icon delete task" class="btn_task-del">
+    <button class="btn_task-del"></button>
   </li>`;
 
   return taskHtml
