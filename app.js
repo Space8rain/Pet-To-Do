@@ -32,9 +32,9 @@ let todoList = localStorage.getItem('tasks')
 
 // Если массив не пустой удаляем заплатку и добавляем в разметку задачи
 if (todoList.length) {
-  tasksCheker ()
+  tasksCheker ();
   todoList.forEach(task => {
-    container.insertAdjacentHTML('beforeend', createNewTask(task))
+    container.append(createNewTask(task))
   })
 };
 
@@ -45,17 +45,21 @@ function saveTasks() {
 
 // Создание разметки новой задачи 
 function createNewTask (data) {
-  const taskHtml = `
-  <li id="${data.id}" class="task">
-    <div class="action">
-      <button class="btn_drag"></button>
-      <input type="checkbox" class="btn_task-done" ${data.done ? 'checked' : ''}>
-    </div>
-    <p class="task_text ${data.done ? 'task_text__done' : ''}">${data.text}</p>
-    <button class="btn_task-del"></button>
-  </li>`;
+  // Находим траффрет разметки
+  const taskTemplate = document.querySelector('#template_task').content;
+  // Копируем с вложениями
+  const newTask = taskTemplate.querySelector('.task').cloneNode(true);
+  // Записываем в атрибут ИД задачи
+  newTask.setAttribute('id', data.id);
 
-  return taskHtml
+  // Заполняем текст задачи
+  newTask.querySelector('.task_text').textContent = data.text;
+  // Проверяем состояние чекбокса и от него устанавливаем класс для текста и статус чекбоксу
+  if (data.done) {
+    newTask.querySelector('.task_text').classList.add('task_text__done');
+    newTask.querySelector('.btn_task-done').setAttribute('checked', '');
+  };
+  return newTask
 };
 
 // Отрисовка заплатки в зависимости от наличия задачи
@@ -103,7 +107,7 @@ function addTask(event) {
   saveTasks();
 
   // Добавляем задачу в разметку
-  container.insertAdjacentHTML('beforeend', createNewTask(newTask));
+  container.append(createNewTask(newTask));
 
   input.value = '';
   input.focus();
