@@ -277,7 +277,7 @@ h1 {
   border-radius: 8px;
   max-height: 44px;
   list-style: none;
-  padding: 10px 13px;
+  padding: 10px 13px 10px 8px;
   font-size: 14px;
   line-height: 22px;
   /* counter-increment: my-counter; */
